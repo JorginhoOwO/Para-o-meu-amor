@@ -1,0 +1,181 @@
+    /* Estilo global */
+    body {
+        margin: 0;
+        overflow: hidden; /* Tela fixa */
+        background: #121212; /* Fundo escuro puro */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+    }
+    
+    /* Caixa de mensagem */
+    #message-box {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        background: #ff4081; /* Botão rosa */
+        color: white;
+        cursor: pointer;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(255, 64, 129, 0.5);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(255, 64, 129, 0.8);
+    }
+    
+    #text {
+        font-size: 3rem;
+        color: #ff80ab;
+        font-weight: bold;
+        display: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        text-shadow: 0 3px 5px rgba(255, 128, 171, 0.5);
+    }
+    
+    #subtext {
+        font-size: 1.5rem;
+        color: #ffb3d9;
+        margin-top: 10px;
+        margin-bottom: 120px;
+        display: none;
+        text-shadow: 0 2px 4px rgba(255, 179, 217, 0.5);
+    }
+    
+    /* Flores */
+    .flower {
+        position: absolute;
+        bottom: 0; /* Posicionado acima da "grama" invisível */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: growFlower 4s ease-out forwards;
+    }
+    
+    .stem {
+        width: 6px;
+        height: 0; /* Inicialmente invisível */
+        background: #2e7d32; /* Verde do caule */
+        animation: growStem 2s ease-out forwards;
+    }
+    
+    .leaf {
+        width: 20px;
+        height: 10px;
+        background: #4caf50;
+        border-radius: 50%;
+        position: absolute;
+        opacity: 0;
+        animation: growLeaf 2s ease-out forwards;
+    }
+    
+    .leaf.left {
+        transform: rotate(-30deg);
+        left: -25px;
+        top: 30px;
+    }
+    
+    .leaf.right {
+        transform: rotate(30deg);
+        right: -25px;
+        top: 50px;
+    }
+    
+    .petal {
+        width: 35px;
+        height: 50px;
+        background: radial-gradient(circle, #ff80ab, #ff4081);
+        position: absolute;
+        border-radius: 50%;
+        transform-origin: bottom center;
+        opacity: 0;
+        animation: growPetal 2s ease-out forwards;
+    }
+    
+    .petal:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+    .petal:nth-child(2) { transform: rotate(60deg) translateY(-20px); }
+    .petal:nth-child(3) { transform: rotate(120deg) translateY(-20px); }
+    .petal:nth-child(4) { transform: rotate(180deg) translateY(-20px); }
+    .petal:nth-child(5) { transform: rotate(240deg) translateY(-20px); }
+    .petal:nth-child(6) { transform: rotate(300deg) translateY(-20px); }
+    
+    .center {
+        width: 30px;
+        height: 30px;
+        background: #ff4081;
+        border-radius: 50%;
+        position: absolute;
+        opacity: 0;
+        animation: growCenter 2s ease-out forwards;
+    }
+    
+    /* Corações */
+    .heart {
+        position: absolute;
+        top: 30%;
+        width: 40px;
+        height: 40px;
+        background: #ff80ab;
+        transform: rotate(-90deg);
+        animation: floatUp 3s ease-in-out forwards;
+    }
+    
+    .heart::before,
+    .heart::after {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: #ff80ab;
+        border-radius: 50%;
+    }
+    
+    .heart::before {
+        top: -20px;
+        left: 0;
+    }
+    
+    .heart::after {
+        top: 0;
+        left: 20px;
+    }
+    
+    /* Animações */
+    @keyframes growStem {
+        0% { height: 0; }
+        100% { height: 110px; }
+    }
+    
+    @keyframes growLeaf {
+        0% { transform: scale(0); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes growPetal {
+        0% { transform: scale(0); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes growCenter {
+        0% { transform: scale(0); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(0.8); opacity: 1; }
+        100% { transform: translateY(-300px) scale(1.2); opacity: 0; }
+    }
